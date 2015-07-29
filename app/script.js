@@ -2,14 +2,14 @@
 
 $(document).ready(function() {
 
+	//currently, there's a bug which switches the word order (looks like just noun and verb)...
+	//sometimes a word might not show up too?
 	$("#name").click(function() {
 		$.get("adjective", function(response) {
-			var adj = response.word;
-			$("#band_name").text(adj);
+			$("#band_name").text(response.word);
 		});
 		$.get("noun", function(response) {
-			var noun = response.word;
-			$("#band_name").append(" " + noun);
+			$("#band_name").append(" " + response.word);
 		});
 		$.get("verb", function(response) {
 			$("#band_name").append(" " + response.word);
@@ -34,6 +34,12 @@ $(document).ready(function() {
 		var adj = $("input[name=adj]").val();
 		var adjPost;
 
+		var noun = $("input[name=noun]").val();
+		var nounPost;
+
+		var verb = $("input[name=verb]").val();
+		var verbPost;
+
 		if(adj) {
 			adjPost = {word: adj};
 			$.post('adjective', adjPost, function(response) {
@@ -43,5 +49,22 @@ $(document).ready(function() {
 			})
 		}
 
+		if(noun) {
+			nounPost = {word: noun};
+			$.post('noun', nounPost, function(response) {
+				console.log(response);
+				var nounResponse = response.message;
+				$("#nounResponse").text(nounResponse);
+			})
+		}
+
+		if(verb) {
+			verbPost = {word: verb};
+			$.post('verb', verbPost, function(response) {
+				console.log(response);
+				var verbResponse = response.message;
+				$("#verbResponse").text(verbResponse);
+			})
+		}
 	});
 });

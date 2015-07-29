@@ -18,6 +18,7 @@ var adjectives = new Adjectives();
 var nouns = new Nouns();
 var verbs = new Verbs();
 
+/***************** GET requests *******************/
 app.get("/", function(req, res) {
 	res.sendFile("index.html");
 });
@@ -34,15 +35,23 @@ app.get("/verb", function(req, res) {
 	res.json(getRandomWord(verbs));
 });
 
-// app.get("/band_name", function(req, res) {
-// 	res.json(getRandomWord(adjectives, nouns, verbs));
-// });
-
+/**************** POST requests ******************/
 app.post("/adjective", function(req, res) {
 	console.log(req.body);
 	res.json(postAddWord(req.body.word, adjectives));
 });
 
+app.post("/noun", function(req, res) {
+	console.log(req.body);
+	res.json(postAddWord(req.body.word, nouns));
+});
+
+app.post("/verb", function(req, res) {
+	console.log(req.body);
+	res.json(postAddWord(req.body.word, verbs));
+});
+
+/********** other ***********/
 app.listen(port, function() {
 	console.log('server started on port ' + port);
 });
