@@ -9,9 +9,38 @@
 			Get band name
 		</button>
 
-		<p>Your name: <span id="adjective"></span></p>
+		<p>Your name: <span id="band_name"></span></p>
 
+		<h3>Submit words for generator</h3>
+
+		<form id="submitWords">
+			<label>Give us an adjective: </label><input type="text" name="adj"/>
+
+			<input type="submit" value="Submit Words"/>
+		</form>
+
+		<p id="adjResponse"></p>
+
+ 		<form id="submitWords">
+			<label>Give us a noun: </label><input type="text" name="noun"/>
+
+			<input type="submit" value="Submit Words"/>
+		</form>
+
+		<p id="nounResponse"></p>
+
+		<form id="submitWords">
+			<label>Give us a verb: </label><input type="text" name="verb"/>
+
+			<input type="submit" value="Submit Words"/>
+		</form>
+
+		<p id="verbResponse"></p>
+<!-- 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		 -->
+		<script src="jquery-2.1.4.js"></script>
+
 		<script src="script.js"></script>
 
 	</body>
